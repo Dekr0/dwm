@@ -78,6 +78,29 @@ Compile and build the source code by doing the following:
 
     make && sudo make clean install
 
+If there are updates from suckless, do the following:
+	
+	If the current repo does not have a remote for https://git.suckless.org/dwm, do the following:
+
+		git remote add upstream https://git.suckless.org/dwm
+
+		Note that "upstream" is a branch name under remotes
+
+	Fetch the updates
+		
+		git fetch upstream
+
+	Switch to your master or main branch
+
+		You can either 
+			
+			rewrite your master or mainbranch so that any commits of yours that aren't already in upstream/master or upstream/main are replayed on top of that other branch
+
+				git rebase upstream/master or git rebase upstream/main
+
+			or you don't want to rewrite the history of your master or main branch, then 
+
+				git merge upstream/master or git merge upstream/main
 
 Applying changes and patches
 -------------
