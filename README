@@ -46,3 +46,54 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+
+Maintaining source code
+-------------
+Before making any change or patch, do the following:
+
+    make clean && rm -f config.h && git reset --hard origin/master
+
+    or run the reset.sh script
+
+    rm -f config.h is to remove config.h file from the make process
+
+    git reset --hard origin/master is to reset the state of main branch to the state of origin/master branch in https://git.suckless.org/dwm
+
+Create a new branch. Name of that new branch can be related to the changes or patches being made
+
+Switch to that new branch
+
+Make the necessary changes / patches in that new branch
+
+Add and commit the change made in that new branch
+
+Switch to main branch (eqivalent to origin/master branch in https://git.suckless.org/dwm)
+
+Merge the change in that new branch into main branch.
+
+Make sure that there are no errors happen after merging. If there are errors, do not go to the next step before errors are resolved
+
+Compile and build the source code by doing the following:
+
+    make && sudo make clean install
+
+
+Applying changes and patches
+-------------
+
+Try the following to apply a desire patch:
+
+    git apply pacth-filename
+
+If the previous step failed, do the following:
+
+    patch < patch-filename
+
+If the previous step failed, it should generate (a) .rej file(s) with. Each .rej file corresponds to a file that needs to be patch. (For example, dwm.rej.c -> dwm.c)
+
+    Open each .rej file and its corresponding file that needs to be patch
+
+        +++ indicates that lines that need to be manually added from .rej file to into its corresponding file that needs to be patch
+
+        --- indicates that lines that need to be manually added from .rej file to into its corresponding file that needs to be patch
