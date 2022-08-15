@@ -127,7 +127,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	// moveplace keybinding
-	{ MODKEY,                       XK_Print,                 moveplace,      {.ui = WIN_NW }},
+	{ MODKEY,                       XK_3270_PrintScreen,      moveplace,      {.ui = WIN_NW }},
 	{ MODKEY,                       XK_Scroll_Lock,           moveplace,      {.ui = WIN_N  }},
 	{ MODKEY,                       XK_Pause,                 moveplace,      {.ui = WIN_NE }},
 	{ MODKEY,                       XK_Insert,                moveplace,      {.ui = WIN_W  }},
