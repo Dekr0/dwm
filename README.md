@@ -1,3 +1,11 @@
+## Introduction
+
+---
+
+- This build of dwm includes some additional patches, which were that were applied upon the original source code of dwm, for personal usage. For offical vanilla version of dwm, please go visit the [offical suckless website](https://dwm.suckless.org/).
+
+---
+
 ## Requirements
 
 ---
