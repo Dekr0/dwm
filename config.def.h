@@ -109,6 +109,16 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	// moveplace keybinding
+	{ MODKEY,                       XK_q,      moveplace,      {.ui = WIN_NW }},
+	{ MODKEY,                       XK_w,      moveplace,      {.ui = WIN_N  }},
+	{ MODKEY,                       XK_e,      moveplace,      {.ui = WIN_NE }},
+	{ MODKEY,                       XK_a,      moveplace,      {.ui = WIN_W  }},
+	{ MODKEY,                       XK_s,      moveplace,      {.ui = WIN_C  }},
+	{ MODKEY,                       XK_d,      moveplace,      {.ui = WIN_E  }},
+	{ MODKEY,                       XK_z,      moveplace,      {.ui = WIN_SW }},
+	{ MODKEY,                       XK_x,      moveplace,      {.ui = WIN_S  }},
+	{ MODKEY,                       XK_c,      moveplace,      {.ui = WIN_SE }},
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
