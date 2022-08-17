@@ -101,7 +101,18 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	
-	// moveresize
+	/* Patches keybinding */
+	// moveplace keybinding
+	{ MODKEY|ShiftMask,             XK_Scroll_Lock,           moveplace,      {.ui = WIN_NW }},
+	{ MODKEY,                       XK_Scroll_Lock,           moveplace,      {.ui = WIN_N  }},
+	{ MODKEY,                       XK_Pause,                 moveplace,      {.ui = WIN_NE }},
+	{ MODKEY,                       XK_Insert,                moveplace,      {.ui = WIN_W  }},
+	{ MODKEY,                       XK_Home,                  moveplace,      {.ui = WIN_C  }},
+	{ MODKEY,                       XK_Page_Up,               moveplace,      {.ui = WIN_E  }},
+	{ MODKEY,                       XK_Delete,                moveplace,      {.ui = WIN_SW }},
+	{ MODKEY,                       XK_End,                   moveplace,      {.ui = WIN_S  }},
+	{ MODKEY,                       XK_Page_Down,             moveplace,      {.ui = WIN_SE }},
+	// moveresize keybinding
 	{ MODKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
 	{ MODKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
 	{ MODKEY,                       XK_Right,  moveresize,     {.v = "25x 0y 0w 0h" } },
@@ -118,6 +129,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask, XK_Down,   moveresizeedge, {.v = "B"} },
 	{ MODKEY|ControlMask|ShiftMask, XK_Left,   moveresizeedge, {.v = "L"} },
 	{ MODKEY|ControlMask|ShiftMask, XK_Right,  moveresizeedge, {.v = "R"} },
+	
 	// rofi keybindg
 	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
 	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
@@ -126,16 +138,6 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	// moveplace keybinding
-	{ MODKEY|ShiftMask,             XK_Scroll_Lock,           moveplace,      {.ui = WIN_NW }},
-	{ MODKEY,                       XK_Scroll_Lock,           moveplace,      {.ui = WIN_N  }},
-	{ MODKEY,                       XK_Pause,                 moveplace,      {.ui = WIN_NE }},
-	{ MODKEY,                       XK_Insert,                moveplace,      {.ui = WIN_W  }},
-	{ MODKEY,                       XK_Home,                  moveplace,      {.ui = WIN_C  }},
-	{ MODKEY,                       XK_Page_Up,               moveplace,      {.ui = WIN_E  }},
-	{ MODKEY,                       XK_Delete,                moveplace,      {.ui = WIN_SW }},
-	{ MODKEY,                       XK_End,                   moveplace,      {.ui = WIN_S  }},
-	{ MODKEY,                       XK_Page_Down,             moveplace,      {.ui = WIN_SE }},
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
