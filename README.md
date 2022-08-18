@@ -2,9 +2,15 @@
 
 - This build of dwm includes some additional patches, which were that were applied upon the original source code of dwm, for personal usage. For offical vanilla version of dwm, please go visit the [offical suckless website](https://dwm.suckless.org/).
 
+- Current `branch` I'm using the most - `moveresize`
+
+---
+
 ## Requirements
 
 - In order to build dwm you need the Xlib header files.
+
+---
 
 ## Installation
 
@@ -14,6 +20,8 @@ the /usr/local namespace by default).
 - Afterwards enter the following command to build and install dwm (if
 necessary as root):
     - `make clean install`
+
+---
 
 ## Running dwm
 
@@ -36,12 +44,18 @@ like this in your .xinitrc:
     exec dwm
 ```
 
+---
+
 ## Configuration
 
 - The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
 
+---
+
 ## Maintaining source code
+
+### General Procedures
 
 - Before making any change or patch, do the following:
     - `make clean && rm -f config.h && git reset --hard origin/master`
@@ -78,6 +92,20 @@ and (re)compiling the source code.
 				- `git rebase upstream/master or git rebase upstream/main`
 			- or you don't want to rewrite the history of your master or main branch, then 
 				- `git merge upstream/master or git merge upstream/main`
+
+---
+
+### Managing Branches
+
+- `main` and `upstream/master` should only contains source code of original build of dwm (without any patch or modification beside `README.md`)
+
+- `keybinding` should only contains keybindings that relates to manipulation of dwm pre-existed functionality, and keybindings that spawn applications or executing command
+	- If you want to add keybindings that relate to a particular patch, make change on the branch that relate to that particular patch
+
+- Everytime install a new patch, try to create a new branch just for that new patch so that it's as modular as possible
+	- unless there are conflicts when merging each branch (install each individual patch).
+
+---
 
 ## Applying changes and patches
 
