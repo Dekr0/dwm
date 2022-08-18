@@ -3,6 +3,11 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
@@ -46,6 +51,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
+#define WINKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -95,6 +101,24 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+
+	// vanitygaps keybinding (modified)
+	{ MODKEY|WINKEY,              XK_plus,               incrgaps,       {.i = +1 } },
+	{ MODKEY|WINKEY,              XK_minus,              incrgaps,       {.i = -1 } },
+	{ MODKEY|WINKEY|ShiftMask,    XK_plus,               incrogaps,      {.i = +1 } },
+	{ MODKEY|WINKEY|ShiftMask,    XK_minus,              incrogaps,      {.i = -1 } },
+	{ MODKEY|WINKEY|ControlMask,  XK_plus,               incrigaps,      {.i = +1 } },
+	{ MODKEY|WINKEY|ControlMask,  XK_minus,              incrigaps,      {.i = -1 } },
+	{ MODKEY|WINKEY,              XK_g,                  togglegaps,     {0} },
+	{ MODKEY|WINKEY|ShiftMask,    XK_g,                  defaultgaps,    {0} },
+	{ MODKEY,                     XK_bracketleft,        incrihgaps,     {.i = +1 } },
+	{ MODKEY,                     XK_bracketright,       incrihgaps,     {.i = -1 } },
+	{ MODKEY|ControlMask,         XK_bracketleft,        incrivgaps,     {.i = +1 } },
+	{ MODKEY|ControlMask,         XK_bracketright,       incrivgaps,     {.i = -1 } },
+	{ MODKEY|WINKEY,              XK_bracketleft,        incrohgaps,     {.i = +1 } },
+	{ MODKEY|WINKEY,              XK_bracketright,       incrohgaps,     {.i = -1 } },
+	{ MODKEY|ShiftMask,           XK_bracketleft,        incrovgaps,     {.i = +1 } },
+	{ MODKEY|ShiftMask,           XK_bracketright,       incrovgaps,     {.i = -1 } },
 };
 
 /* button definitions */
