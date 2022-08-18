@@ -1,22 +1,25 @@
+<<<<<<< HEAD
 ## Remark
-
----
 
 - This branch was created under keybinding! Patch was already manually applied.
 
 ---
 
-## Requirements
+## Introduction
+
+- This build of dwm includes some additional patches, which were that were applied upon the original source code of dwm, for personal usage. For offical vanilla version of dwm, please go visit the [offical suckless website](https://dwm.suckless.org/).
+
+- Current `branch` I'm using the most - `moveresize`
 
 ---
+
+## Requirements
 
 - In order to build dwm you need the Xlib header files.
 
 ---
 
 ## Installation
-
----
 
 - Edit config.mk to match your local setup (dwm is installed into
 the /usr/local namespace by default).
@@ -28,8 +31,6 @@ necessary as root):
 ---
 
 ## Running dwm
-
----
 
 - Add the following line to your .xinitrc to start dwm using startx:
     - `exec dwm`
@@ -54,8 +55,6 @@ like this in your .xinitrc:
 
 ## Configuration
 
----
-
 - The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
 
@@ -63,7 +62,7 @@ and (re)compiling the source code.
 
 ## Maintaining source code
 
----
+### General Procedures
 
 - Before making any change or patch, do the following:
     - `make clean && rm -f config.h && git reset --hard origin/master`
@@ -103,9 +102,20 @@ and (re)compiling the source code.
 
 ---
 
-## Applying changes and patches
+### Managing Branches
+
+- `main` and `upstream/master` should only contains source code of original build of dwm (without any patch or modification beside `README.md`)
+
+- `keybinding` should only contains keybindings that relates to manipulation of dwm pre-existed functionality, and keybindings that spawn applications or executing command
+	- If you want to add keybindings that relate to a particular patch, make change on the branch that relate to that particular patch
+
+- Everytime install a new patch, try to create a new branch just for that new patch so that it's as modular as possible
+	- unless there are conflicts when merging each branch (install each individual patch).
 
 ---
+
+## Applying changes and patches
+
 
 - Try the following to apply a desire patch:
     - `git apply pacth-filename`
