@@ -116,7 +116,7 @@ static Key keys[] = {
 
 	/* Application keybinding */
 	// flameshot keybinding
-	{ ControlMask|ShiftMask,         XK_s,      spawn,          {.v = flameshot_gui} },
+	{ ControlMask|ShiftMask,        XK_s,      spawn,          {.v = flameshot_gui} },
 	// pulseaudio keybinding
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
