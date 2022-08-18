@@ -103,11 +103,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 
 	// vanitygaps keybinding (modified)
-	{ MODKEY|WINKEY,              XK_plus,               incrgaps,       {.i = +1 } },
+	{ MODKEY|WINKEY,              XK_equal,              incrgaps,       {.i = +1 } },
 	{ MODKEY|WINKEY,              XK_minus,              incrgaps,       {.i = -1 } },
-	{ MODKEY|WINKEY|ShiftMask,    XK_plus,               incrogaps,      {.i = +1 } },
+	{ MODKEY|WINKEY|ShiftMask,    XK_equal,              incrogaps,      {.i = +1 } },
 	{ MODKEY|WINKEY|ShiftMask,    XK_minus,              incrogaps,      {.i = -1 } },
-	{ MODKEY|WINKEY|ControlMask,  XK_plus,               incrigaps,      {.i = +1 } },
+	{ MODKEY|WINKEY|ControlMask,  XK_equal,              incrigaps,      {.i = +1 } },
 	{ MODKEY|WINKEY|ControlMask,  XK_minus,              incrigaps,      {.i = -1 } },
 	{ MODKEY|WINKEY,              XK_g,                  togglegaps,     {0} },
 	{ MODKEY|WINKEY|ShiftMask,    XK_g,                  defaultgaps,    {0} },
