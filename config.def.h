@@ -74,10 +74,13 @@ static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 
+/* flameshot commands */
+static const char *flameshot_gui[] = { "flameshot", "gui", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	// { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ WINKEY,                       XK_Return, spawn,          {.v = termcmd } }, // Modified
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -88,7 +91,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // Modified
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -100,7 +103,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY|ShiftMask,             XK_0,      quit,           {0} }, // Modified
+
 	/* Patches keybinding */
 	// moveplace keybinding
 	{ MODKEY|ShiftMask,             XK_Scroll_Lock,           moveplace,      {.ui = WIN_NW }},
@@ -130,25 +143,17 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask, XK_Left,   moveresizeedge, {.v = "L"} },
 	{ MODKEY|ControlMask|ShiftMask, XK_Right,  moveresizeedge, {.v = "R"} },
 	
-	// rofi keybindg
-	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
-	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
-	{ WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
+	/* Application keybinding */
+	// flameshot keybinding
+	{ ControlMask|ShiftMask         XK_s,      spawn,          {.v = flameshot_gui} },
 	// pulseaudio keybinding
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	// rofi keybinding
+	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
+	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
+	{ WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
 };
 
 /* button definitions */
