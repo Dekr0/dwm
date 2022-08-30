@@ -82,6 +82,9 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_
 /* flameshot commands */
 static const char *flameshot_gui[] = { "flameshot", "gui", NULL };
 
+/* xbacklight commands */
+static const char *incr_brightness[] = { "xbacklight", "-inc", "5", NULL };
+static const char *decr_brightness[] = { "xbacklight", "-dec", "5", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -186,6 +189,9 @@ static Key keys[] = {
 	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
 	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
 	{ WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
+	// xbacklight
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
 };
 
 /* button definitions */
