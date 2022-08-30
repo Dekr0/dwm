@@ -64,6 +64,10 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL }; // Modified
 
+/* screen brightness */
+static const char *incr_brightness[] = { "xbacklight", "-inc", "5", NULL };
+static const char *decr_brightness[] = { "xbacklight", "-dec", "5", NULL };
+
 /* rofi commands */
 static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
 static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
@@ -125,6 +129,9 @@ static Key keys[] = {
 	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
 	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
 	{ WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
+	// xbacklight
+	{ 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
+	{ 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
 };
 
 /* button definitions */
