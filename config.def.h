@@ -69,27 +69,35 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL }; // Modified
 
-// Web command
-static const char *web_cmd[] = { "chromium", NULL };
-
-// Ranger command
-static const char *ranger_cmd[] = { "ranger", NULL };
-
 // Discord command
 static const char *discord_cmd[] = { "discord", NULL };
 
-/* rofi commands */
-static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
-static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
-static const char *rofi_window[] = { "rofi", "-show", "window", NULL };
+/* flameshot commands */
+static const char *flameshot_gui[] = { "flameshot", "gui", NULL };
 
 /* pulseaudio commands */
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 
-/* flameshot commands */
-static const char *flameshot_gui[] = { "flameshot", "gui", NULL };
+// Ranger command
+static const char *ranger_cmd[] = { "ranger", NULL };
+
+// Reboot command
+static const char *reboot_cmd[] = { "reboot", NULL };
+
+/* rofi commands */
+static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
+static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
+static const char *rofi_window[] = { "rofi", "-show", "window", NULL };
+
+static const char *shutdown_cmd[] = { "shutdown", "now", NULL };
+
+// Web command
+static const char *web_cmd[] = { "chromium", NULL };
+
+// wmname command
+static const char *fix_swing_cmd[] = { "wmname", "LG3D", NULL };
 
 /* xbacklight commands */
 static const char *incr_brightness[] = { "xbacklight", "-inc", "5", NULL };
@@ -130,6 +138,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_0,      quit,           {0} }, // Modified
+	{ MODKEY|ShiftMask,             XK_BackSpace,              {.v = shutdown_cmd} },
+	{ MODKEY|ControlMask,           XK_BackSpace,              {.v = reboot_cmd} },
 
 	/* Patches keybinding */
 	// moveplace keybinding
@@ -188,16 +198,24 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,           XK_bracketright,       incrovgaps,     {.i = -1 } },
 	
 	/* Application keybinding */
+	// browser keybinding
+	{ WINKEY,                       XK_b,      spawn,          {.v = web_cmd } },
+	// discord keybinding
+	{ WINKEY                        XK_c,      spawn,          {.v = discord_cmd} },
 	// flameshot keybinding
 	{ ControlMask|ShiftMask,        XK_s,      spawn,          {.v = flameshot_gui} },
 	// pulseaudio keybinding
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	// ranger
+	{ WINKEY,                       XK_r,      spawn,          {.v = ranger_cmd } },
 	// rofi keybinding
 	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
 	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
 	{ WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
+	// wmname
+	{ WINKEY|MODKEY,                XK_f,      spawn,          {.v = fix_swing_cmd } },
 	// xbacklight
 	{ 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
 	{ 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
