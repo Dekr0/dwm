@@ -138,8 +138,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_0,      quit,           {0} }, // Modified
-	{ MODKEY|ShiftMask,             XK_BackSpace,              {.v = shutdown_cmd} },
-	{ MODKEY|ControlMask,           XK_BackSpace,              {.v = reboot_cmd} },
+	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,             {.v = shutdown_cmd} },
+	{ MODKEY|ControlMask,           XK_BackSpace, spawn,             {.v = reboot_cmd} },
 
 	/* Patches keybinding */
 	// moveplace keybinding
