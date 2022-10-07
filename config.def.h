@@ -81,7 +81,7 @@ static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 
 // Ranger command
-static const char *ranger_cmd[] = { "ranger", NULL };
+static const char *ranger_cmd[] = { "alacritty", "-e", "ranger", NULL };
 
 // Reboot command
 static const char *reboot_cmd[] = { "reboot", NULL };
