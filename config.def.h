@@ -201,7 +201,7 @@ static Key keys[] = {
 	// browser keybinding
 	{ WINKEY,                       XK_b,      spawn,          {.v = web_cmd } },
 	// discord keybinding
-	{ WINKEY                        XK_c,      spawn,          {.v = discord_cmd} },
+	{ WINKEY,                       XK_c,      spawn,          {.v = discord_cmd} },
 	// flameshot keybinding
 	{ ControlMask|ShiftMask,        XK_s,      spawn,          {.v = flameshot_gui} },
 	// pulseaudio keybinding
