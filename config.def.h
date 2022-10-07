@@ -69,6 +69,15 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL }; // Modified
 
+// Web command
+static const char *web_cmd[] = { "chromium", NULL };
+
+// Ranger command
+static const char *ranger_cmd[] = { "ranger", NULL };
+
+// Discord command
+static const char *discord_cmd[] = { "discord", NULL };
+
 /* rofi commands */
 static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
 static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
@@ -124,25 +133,25 @@ static Key keys[] = {
 
 	/* Patches keybinding */
 	// moveplace keybinding
-	// { MODKEY|ShiftMask,             XK_Scroll_Lock,           moveplace,      {.ui = WIN_NW }},
-	// { MODKEY,                       XK_Scroll_Lock,           moveplace,      {.ui = WIN_N  }},
-	// { MODKEY,                       XK_Pause,                 moveplace,      {.ui = WIN_NE }},
-	// { MODKEY,                       XK_Insert,                moveplace,      {.ui = WIN_W  }},
-	// { MODKEY,                       XK_Home,                  moveplace,      {.ui = WIN_C  }},
-	// { MODKEY,                       XK_Page_Up,               moveplace,      {.ui = WIN_E  }},
-	// { MODKEY,                       XK_Delete,                moveplace,      {.ui = WIN_SW }},
-	// { MODKEY,                       XK_End,                   moveplace,      {.ui = WIN_S  }},
-	// { MODKEY,                       XK_Page_Down,             moveplace,      {.ui = WIN_SE }},
+	{ MODKEY|ShiftMask,             XK_Scroll_Lock,           moveplace,      {.ui = WIN_NW }},
+	{ MODKEY,                       XK_Scroll_Lock,           moveplace,      {.ui = WIN_N  }},
+	{ MODKEY,                       XK_Pause,                 moveplace,      {.ui = WIN_NE }},
+	{ MODKEY,                       XK_Insert,                moveplace,      {.ui = WIN_W  }},
+	{ MODKEY,                       XK_Home,                  moveplace,      {.ui = WIN_C  }},
+	{ MODKEY,                       XK_Page_Up,               moveplace,      {.ui = WIN_E  }},
+	{ MODKEY,                       XK_Delete,                moveplace,      {.ui = WIN_SW }},
+	{ MODKEY,                       XK_End,                   moveplace,      {.ui = WIN_S  }},
+	{ MODKEY,                       XK_Page_Down,             moveplace,      {.ui = WIN_SE }},
 	// moveplace laptop keybinding
-	{ MODKEY,                       XK_KP_Home,         moveplace,      {.ui = WIN_NW }},
-	{ MODKEY,                       XK_KP_Up,           moveplace,      {.ui = WIN_N  }},
-	{ MODKEY,                       XK_KP_Page_Up,      moveplace,      {.ui = WIN_NE }},
-	{ MODKEY,                       XK_KP_Left,         moveplace,      {.ui = WIN_W  }},
-	{ MODKEY,                       XK_KP_Insert,       moveplace,      {.ui = WIN_C  }},
-	{ MODKEY,                       XK_KP_Right,        moveplace,      {.ui = WIN_E  }},
-	{ MODKEY,                       XK_KP_End,          moveplace,      {.ui = WIN_SW }},
-	{ MODKEY,                       XK_KP_Down,         moveplace,      {.ui = WIN_S  }},
-	{ MODKEY,                       XK_KP_Page_Down,    moveplace,      {.ui = WIN_SE }},
+	// { MODKEY,                       XK_KP_Home,         moveplace,      {.ui = WIN_NW }},
+	// { MODKEY,                       XK_KP_Up,           moveplace,      {.ui = WIN_N  }},
+	// { MODKEY,                       XK_KP_Page_Up,      moveplace,      {.ui = WIN_NE }},
+	// { MODKEY,                       XK_KP_Left,         moveplace,      {.ui = WIN_W  }},
+	// { MODKEY,                       XK_KP_Insert,       moveplace,      {.ui = WIN_C  }},
+	// { MODKEY,                       XK_KP_Right,        moveplace,      {.ui = WIN_E  }},
+	// { MODKEY,                       XK_KP_End,          moveplace,      {.ui = WIN_SW }},
+	// { MODKEY,                       XK_KP_Down,         moveplace,      {.ui = WIN_S  }},
+	// { MODKEY,                       XK_KP_Page_Down,    moveplace,      {.ui = WIN_SE }},
 	// moveresize keybinding
 	{ WINKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
 	{ WINKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
