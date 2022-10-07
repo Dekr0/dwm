@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Remark
 
 - This branch was created under keybinding! Patch was already manually applied.
