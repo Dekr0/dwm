@@ -13,8 +13,8 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "caskaydiacove-nerd-font-mono:size=10" };
+static const char dmenufont[]       = "caskaydiacove-nerd-font-mono:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -28,22 +28,12 @@ static const char norm_border[] = "#665c54";
 
 static const char sel_fg[] = "#262626";
 static const char sel_bg[] = "#FE8019";
-static const char sel_border[] = "#fbf1c7";
-
-static const char urg_fg[] = "#fbf1c7";
-static const char urg_bg[] = "#fb4934";
-static const char urg_border[] = "#fb4934";
-
-static const char title_fg[] = "#98971A";
-static const char title_bg[] = "#3B3835";
+static const char sel_border[] = "#FE8019";
 
 static const char *colors[][3]      = {
     /*               fg           bg          border                         */
     [SchemeNorm] =   { norm_fg,   norm_bg,    norm_border }, 		     // unfocused wins
     [SchemeSel]  =   { sel_fg,    sel_bg,     sel_border },		     // the focused win
-    [SchemeUrg] =    { urg_fg,    urg_bg,     urg_border },
-    [SchemeTitle]  = { title_fg, title_bg,  norm_border },
-
 };
 
 /* tagging */
