@@ -21,19 +21,18 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 
-// gruvbox-medium
-static const char norm_fg[] = "#D5C4A1";
-static const char norm_bg[] = "#262626";
-static const char norm_border[] = "#665c54";
-
-static const char sel_fg[] = "#262626";
-static const char sel_bg[] = "#FE8019";
-static const char sel_border[] = "#FE8019";
+// solarized dark
+static const char normbordercolor[] = "#002b36";
+static const char normbgcolor[]     = "#002b36";
+static const char normfgcolor[]     = "#657b83";
+static const char selbordercolor[]  = "#93a1a1";
+static const char selbgcolor[]      = "#93a1a1";
+static const char selfgcolor[]      = "#002b36";;
 
 static const char *colors[][3]      = {
     /*               fg           bg          border                         */
-    [SchemeNorm] =   { norm_fg,   norm_bg,    norm_border }, 		     // unfocused wins
-    [SchemeSel]  =   { sel_fg,    sel_bg,     sel_border },		     // the focused win
+    [SchemeNorm] =   { normfgcolor, normbgcolor, normbordercolor }, 		     // unfocused wins
+    [SchemeSel]  =   { selfgcolor,  selbgcolor,  selbordercolor },		     // the focused win
 };
 
 /* tagging */
