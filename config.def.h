@@ -21,13 +21,13 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 
-// one dark
-static const char normbordercolor[] = "#282c34";
-static const char normbgcolor[]     = "#1e222a";
-static const char normfgcolor[]     = "#efefef";
-static const char selbordercolor[]  = "#4d78cc";
-static const char selbgcolor[]      = "#4d78cc";
-static const char selfgcolor[]      = "#ffffff";
+// Default
+static const char normbordercolor[] = "#444444";
+static const char normbgcolor[]     = "#222222";
+static const char normfgcolor[]     = "#bbbbbb";
+static const char selbordercolor[]  = "#005577";
+static const char selbgcolor[]      = "#005577";
+static const char selfgcolor[]      = "#eeeeee";
 
 static const char *colors[][3]      = {
     /*               fg           bg          border                         */
