@@ -21,18 +21,13 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 
-// Default
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+/* theme */
+#include "theme.h"
 
 static const char *colors[][3]      = {
-    /*               fg           bg          border                         */
-    [SchemeNorm] =   { normfgcolor, normbgcolor, normbordercolor }, 		     // unfocused wins
-    [SchemeSel]  =   { selfgcolor,  selbgcolor,  selbordercolor },		     // the focused win
+    /*                     fg       bg      border */
+    [SchemeNorm]       = { gray3,   black,  gray2 },
+    [SchemeSel]        = { gray4,   blue,   blue  },
 };
 
 /* tagging */
