@@ -1,47 +1,27 @@
-/* See LICENSE file for copyright and license details. */
-
-// For function keys
-#include <X11/XF86keysym.h>
-
-
-/* broder */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-
-
-/* snap */
-static const unsigned int snap      = 32;       /* snap pixel */
-
-
-/* gaps */
-static const unsigned int gappih    = 15;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 15;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 15;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 15;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-
-
-/* bar */
-static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
-
+/* appearance (sizing, border) per window */
+static const unsigned int borderpx  = 1;  /* border pixel of windows */
+static const unsigned int snap      = 32; /* snap pixel */
+static const unsigned int gappih    = 15; /* horiz inner gap between windows */
+static const unsigned int gappiv    = 15; /* vert inner gap between windows */
+static const unsigned int gappoh    = 15; /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 15; /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 0;  /* 1 means no outer gap when there is only one window */
+static const int showbar            = 1;  /* 0 means no bar */
+static const int topbar             = 0;  /* 0 means bottom bar */
 
 /* font */
-static const char *fonts[]          = { "CaskaydiaCove Nerd Font:size=10:antialias=true:autohint=true" };
-
+static const char *fonts[] = { "CaskaydiaCove Nerd Font:size=10:antialias=true:autohint=true" };
 
 /* theme */
 #include "theme.h"
-
-static const char *colors[][3]      = {
+static const char *colors[][3] = {
     /*                     fg       bg      border */
     [SchemeNorm]       = { white,   black,  gray2 },
     [SchemeSel]        = { black,   blue,   blue  },
 };
 
-
-/* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
+/* tag */
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -51,7 +31,6 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
-
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -66,10 +45,10 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
+/* keybinding */
+#include <X11/XF86keysym.h> // For function keys
+#include "command.h"
 
-/* hotkey */
-
-// key definitions
 #define MODKEY Mod1Mask
 #define WINKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
@@ -77,16 +56,13 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-
-// helper for spawning shell commands in the pre dwm-5.0 fashion
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
-
-#include "launcher.h"
+#define SHCMD(cmd) \ // helper for spawning shell commands in the pre dwm-5.0 fashion
+{ .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } } 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ WINKEY,                       XK_Return, spawn,          {.v = termcmd } }, // Modified
+
+    /* windows management */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -96,7 +72,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // Modified
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -108,6 +83,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
+    /* tag */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -117,12 +94,30 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_0,      quit,           {0} }, // Modified
-	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,             {.v = shutdown_cmd} },
-	{ MODKEY|ControlMask,           XK_BackSpace, spawn,             {.v = reboot_cmd} },
+    { MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_0,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,             {.v = shutdown} },
+	{ MODKEY|ControlMask,           XK_BackSpace, spawn,             {.v = reboot} },
 
-	/* Patches keybinding */
-	// moveplace keybinding
+    /* application */
+    { WINKEY,                       XK_b,      spawn,          {.v = browser } },
+    { WINKEY,                       XK_c,      spawn,          {.v = discord } },
+    { MODKEY,                       XK_p,      spawn,          {.v = dmenu } },
+    { WINKEY,                       XK_e,      spawn,          {.v = file_manager } },
+    { ControlMask|ShiftMask,        XK_s,      spawn,          {.v = flameshot } },
+    { WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
+    { WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
+    { WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
+    { WINKEY,                       XK_Return, spawn,          {.v = terminal } },
+    { WINKEY|MODKEY,                XK_f,      spawn,          {.v = wmname } },
+    { 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
+    { 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
+    { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+    { 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
+    { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+
+	/* patches */
+	// moveplace (keyboard with no numpad)
 	{ MODKEY|ShiftMask,             XK_Scroll_Lock,           moveplace,      {.ui = WIN_NW }},
 	{ MODKEY,                       XK_Scroll_Lock,           moveplace,      {.ui = WIN_N  }},
 	{ MODKEY,                       XK_Pause,                 moveplace,      {.ui = WIN_NE }},
@@ -132,7 +127,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Delete,                moveplace,      {.ui = WIN_SW }},
 	{ MODKEY,                       XK_End,                   moveplace,      {.ui = WIN_S  }},
 	{ MODKEY,                       XK_Page_Down,             moveplace,      {.ui = WIN_SE }},
-	// moveplace laptop keybinding
+
+	// moveplace (keyboard with numpad)
 	// { MODKEY,                       XK_KP_Home,         moveplace,      {.ui = WIN_NW }},
 	// { MODKEY,                       XK_KP_Up,           moveplace,      {.ui = WIN_N  }},
 	// { MODKEY,                       XK_KP_Page_Up,      moveplace,      {.ui = WIN_NE }},
@@ -142,7 +138,8 @@ static Key keys[] = {
 	// { MODKEY,                       XK_KP_End,          moveplace,      {.ui = WIN_SW }},
 	// { MODKEY,                       XK_KP_Down,         moveplace,      {.ui = WIN_S  }},
 	// { MODKEY,                       XK_KP_Page_Down,    moveplace,      {.ui = WIN_SE }},
-	// moveresize keybinding
+
+	// moveresize
 	{ WINKEY,                       XK_Down,   moveresize,     {.v = "0x 25y 0w 0h" } },
 	{ WINKEY,                       XK_Up,     moveresize,     {.v = "0x -25y 0w 0h" } },
 	{ WINKEY,                       XK_Right,  moveresize,     {.v = "25x 0y 0w 0h" } },
@@ -159,7 +156,8 @@ static Key keys[] = {
 	{ WINKEY|ControlMask|ShiftMask, XK_Down,   moveresizeedge, {.v = "B"} },
 	{ WINKEY|ControlMask|ShiftMask, XK_Left,   moveresizeedge, {.v = "L"} },
 	{ WINKEY|ControlMask|ShiftMask, XK_Right,  moveresizeedge, {.v = "R"} },
-	// vanitygaps keybinding (modified)
+
+	// vanitygaps
 	{ MODKEY|WINKEY,              XK_equal,              incrgaps,       {.i = +1 } },
 	{ MODKEY|WINKEY,              XK_minus,              incrgaps,       {.i = -1 } },
 	{ MODKEY|WINKEY|ShiftMask,    XK_equal,              incrogaps,      {.i = +1 } },
@@ -176,29 +174,6 @@ static Key keys[] = {
 	{ MODKEY|WINKEY,              XK_bracketright,       incrohgaps,     {.i = -1 } },
 	{ MODKEY|ShiftMask,           XK_bracketleft,        incrovgaps,     {.i = +1 } },
 	{ MODKEY|ShiftMask,           XK_bracketright,       incrovgaps,     {.i = -1 } },
-	
-	/* Application keybinding */
-	// browser keybinding
-	{ WINKEY,                       XK_b,      spawn,          {.v = web_cmd } },
-	// discord keybinding
-	{ WINKEY,                       XK_c,      spawn,          {.v = discord_cmd} },
-	// flameshot keybinding
-	{ ControlMask|ShiftMask,        XK_s,      spawn,          {.v = flameshot_gui} },
-	// pulseaudio keybinding
-	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
-	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	// tui file explorer
-	{ WINKEY,                       XK_e,      spawn,          {.v = nnn_cmd } },
-	// rofi keybinding
-	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
-	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
-	{ WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
-	// wmname
-	{ WINKEY|MODKEY,                XK_f,      spawn,          {.v = fix_swing_cmd } },
-	// xbacklight
-	{ 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
-	{ 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
 };
 
 /* button definitions */
