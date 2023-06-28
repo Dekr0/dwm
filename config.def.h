@@ -188,8 +188,8 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
 	{ 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
 	{ 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	// nnn
-	{ WINKEY,                       XK_e,      spawn,          {.v = ranger_cmd } },
+	// tui file explorer
+	{ WINKEY,                       XK_e,      spawn,          {.v = nnn_cmd } },
 	// rofi keybinding
 	{ WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
 	{ WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
