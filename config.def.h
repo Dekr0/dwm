@@ -34,8 +34,8 @@ static const char *fonts[]          = { "CaskaydiaCove Nerd Font:size=10:antiali
 
 static const char *colors[][3]      = {
     /*                     fg       bg      border */
-    [SchemeNorm]       = { gray3,   black,  gray2 },
-    [SchemeSel]        = { gray4,   blue,   blue  },
+    [SchemeNorm]       = { white,   black,  gray2 },
+    [SchemeSel]        = { black,   blue,   blue  },
 };
 
 
