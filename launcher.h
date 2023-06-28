@@ -21,7 +21,7 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_
 
 
 // nnn command
-static const char *ranger_cmd[] = { "alacritty", "-e", "nnn -ePp", NULL };
+static const char *nnn_cmd[] = { "alacritty", "-e", "nnn", "-ePp", NULL };
 
 
 // reboot command
