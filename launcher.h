@@ -1,6 +1,6 @@
 // dmenu
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon};
+// static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon};
 
 
 // terminal
@@ -22,7 +22,7 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_
 
 
 // ranger command
-static const char *ranger_cmd[] = { "alacritty", "-e", "ranger", NULL };
+static const char *ranger_cmd[] = { "alacritty", "-e", "nnn", NULL };
 
 
 // reboot command
