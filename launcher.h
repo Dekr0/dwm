@@ -14,15 +14,14 @@ static const char *discord_cmd[] = { "discord", NULL };
 // flameshot
 static const char *flameshot_gui[] = { "flameshot", "gui", NULL };
 
-
 // pulseaudio
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
 
 
-// ranger command
-static const char *ranger_cmd[] = { "alacritty", "-e", "nnn", NULL };
+// nnn command
+static const char *ranger_cmd[] = { "alacritty", "-e", "nnn -ePp", NULL };
 
 
 // reboot command
