@@ -1,8 +1,13 @@
 ## Introduction
 
-- This build of dwm includes some additional patches, which were that were applied upon the original source code of dwm, for personal usage. For offical vanilla version of dwm, please go visit the [offical suckless website](https://dwm.suckless.org/).
+- This build of dwm includes ~~some additional patches, which were that were applied 
+upon the original source code of dwm, for personal usage~~. This build of dwm 
+includes no patches except personal keybinding, scripting and windows rules that try 
+to speed up productivity (take long enough for me to figure out additional eye candy 
+and visual effect bring more distractions) For offical vanilla version of dwm, 
+please go visit the [offical suckless website](https://dwm.suckless.org/).
 
-- Current `branch` I'm using the most - `moveresize`
+- Current `branch` I'm using the most - ~~`moveresize`~~ `clean`
 
 ---
 
