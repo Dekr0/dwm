@@ -15,18 +15,18 @@ static const char *fonts[]             = { "CaskaydiaCove Nerd Font:size=10:anti
 #include "theme.h"
 
 /* default */
-// static const char *colors[][3]      = {
-// 	/*               fg         bg         border   */
-// 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-// 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-// };
+static const char *colors[][3]      = {
+	/*               fg         bg         border   */
+	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+};
 
 /* tokyo night */
-static const char *colors[][3] = {
-    /*                     fg       bg      border */
-    [SchemeNorm]       = { white,   black,  gray2 },
-    [SchemeSel]        = { black,   blue,   blue  },
-};
+// static const char *colors[][3] = {
+//     /*                     fg       bg      border */
+//     [SchemeNorm]       = { white,   black,  gray2 },
+//     [SchemeSel]        = { black,   blue,   blue  },
+// };
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
