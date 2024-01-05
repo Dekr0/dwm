@@ -1,5 +1,6 @@
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 5;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
@@ -132,6 +133,11 @@ static const Key keys[] = {
     { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
     { 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
     { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+
+    /* gaps */
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 };
 
 /* button definitions */
