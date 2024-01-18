@@ -43,9 +43,9 @@ static const Rule rules[] = {
     { "obsidian" , NULL,       NULL,       1 << 2,       0,           -1 },
     { "dbeaver",   NULL,       NULL,       1 << 3,       0,           -1 },
     { "code",      NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Gimp",      NULL,       NULL,       1 << 5,       0,           -1 },
-    { "spotify",   NULL,       NULL,       1 << 8,       0,           -1 },
-    { "Discord",   NULL,       NULL,       1 << 8,       0,           -1 }
+	{ "Gimp",      NULL,       NULL,       1 << 4,       0,           -1 },
+    { "spotify",   NULL,       NULL,       1 << 5,       0,           -1 },
+    { "Discord",   NULL,       NULL,       1 << 5,       0,           -1 }
 };
 
 /* layout(s) */
