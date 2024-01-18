@@ -7,7 +7,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", "Caskaydia
 static const char *obsidian[] = { "obsidian", NULL };
 static const char *gimp[] = { "gimp", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
-static const char *terminal[]  = { "alacritty", NULL };
+static const char *terminal[]  = { "st", "-e", "/usr/bin/tmux", NULL };
 static const char *wmname[] = { "wmname", "LG3D", NULL };
 
 static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
