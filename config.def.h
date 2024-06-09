@@ -22,12 +22,6 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_rose  },
 };
 
-/* tokyo night */
-// static const char *colors[][3] = {
-//     /*                     fg       bg      border */
-//     [SchemeNorm]       = { white,   black,  gray2 },
-//     [SchemeSel]        = { black,   blue,   blue  },
-// };
 
 /* tagging */
 static const char *tags[] = { "", "", "", "󰘐", "", "󰙯  ", "7", "8", "9" };
