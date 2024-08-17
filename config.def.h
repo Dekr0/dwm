@@ -24,7 +24,7 @@ static const char *colors[][3]      = {
 
 
 /* tagging */
-static const char *tags[] = { "", "", "", "󰘐", "", "󰙯  ", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "󰙯", "", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -32,14 +32,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-    { "st",        NULL,       NULL,       1 << 0,       0,           -1 },
+    { "Alacritty", NULL,       NULL,       1 << 0,       0,           -1 },
 	{ "Chromium",  NULL,       NULL,       1 << 1,       0,           -1 },
     { "obsidian" , NULL,       NULL,       1 << 2,       0,           -1 },
-    { "dbeaver",   NULL,       NULL,       1 << 3,       0,           -1 },
-    { "code",      NULL,       NULL,       1 << 3,       0,           -1 },
+    { "Discord",   NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Gimp",      NULL,       NULL,       1 << 4,       0,           -1 },
-    { "spotify",   NULL,       NULL,       1 << 5,       0,           -1 },
-    { "Discord",   NULL,       NULL,       1 << 5,       0,           -1 }
 };
 
 /* layout(s) */
@@ -105,28 +102,26 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-    { MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_0,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,             {.v = shutdown} },
-	{ MODKEY|ControlMask,           XK_BackSpace, spawn,             {.v = reboot} },
+    { MODKEY|ShiftMask,             XK_q,         killclient,  {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 
     /* application */
-    { WINKEY,                       XK_b,      spawn,          {.v = browser } },
-    { WINKEY,                       XK_c,      spawn,          {.v = discord } },
-    { WINKEY,                       XK_g,      spawn,          {.v = gimp }},
-    { WINKEY,                       XK_o,      spawn,          {.v = obsidian }},
-    { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-    { ControlMask|ShiftMask,        XK_s,      spawn,          {.v = flameshot } },
-    { WINKEY|ShiftMask,             XK_d,      spawn,          {.v = rofi_run } },
-    { WINKEY,                       XK_d,      spawn,          {.v = rofi_drun } },
-    { WINKEY,                       XK_w,      spawn,          {.v = rofi_window } },
-    { WINKEY,                       XK_Return, spawn,          {.v = terminal } },
-    { WINKEY|MODKEY,                XK_f,      spawn,          {.v = wmname } },
-    { 0,                            XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
-    { 0,                            XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
-    { 0,                            XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-    { 0,                            XF86XK_AudioMute,        spawn, {.v = mutevol } },
-    { 0,                            XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+    { WINKEY,                       XK_b,      spawn,      {.v = browser } },
+    { WINKEY,                       XK_d,      spawn,      {.v = discord } },
+    { WINKEY,                       XK_g,      spawn,      {.v = gimp }},
+    { WINKEY,                       XK_o,      spawn,      {.v = obsidian }},
+    { MODKEY,                       XK_p,      spawn,      {.v = dmenucmd } },
+    { ControlMask|ShiftMask,        XK_s,      spawn,      {.v = flameshot } },
+    { WINKEY|ShiftMask,             XK_r,      spawn,      {.v = rofi_run } },
+    { WINKEY,                       XK_r,      spawn,      {.v = rofi_drun } },
+    { WINKEY,                       XK_w,      spawn,      {.v = rofi_window } },
+    { WINKEY,                       XK_Return, spawn,      {.v = terminal } },
+
+    { 0,             XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
+    { 0,             XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
+    { 0,             XF86XK_AudioLowerVolume,   spawn, {.v = downvol } },
+    { 0,             XF86XK_AudioMute,          spawn, {.v = mutevol } },
+    { 0,             XF86XK_AudioRaiseVolume,   spawn, {.v = upvol   } },
 
     /* gaps */
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
