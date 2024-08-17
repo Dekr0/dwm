@@ -1,8 +1,9 @@
 /************
  * commands *
  * **********/
-static const char *lof = "/home/dekr0/.config/zsh/lof.sh"
-static const char *lof_browser[] = { lof, "chromium", "Chromium", NULL };
+#define LOF "/home/dekr0/.config/zsh/lof.sh"
+
+static const char *lof_browser[] = { LOF, "chromium", "Chromium", NULL };
 static const char *discord[] = { "/opt/Discord/Discord", NULL };
 
 /* component of dmenucmd, manipulated in spawn() */
@@ -13,7 +14,7 @@ static const char *dmenucmd[] = { "dmenu_run",
 static const char *obsidian[] = { "obsidian", NULL };
 static const char *gimp[] = { "gimp", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
-static const char *lof_terminal[]  = { lof, "alacritty", "Alacritty", NULL };
+static const char *lof_terminal[]  = { LOF, "alacritty", "Alacritty", NULL };
 
 static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
 static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
