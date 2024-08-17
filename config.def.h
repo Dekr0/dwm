@@ -4,6 +4,7 @@
 #define LOF "/home/dekr0/.config/zsh/lof.sh"
 
 static const char *lof_browser[] = { LOF, "chromium", "Chromium", NULL };
+static const char *browser[] = { "chromium", NULL };
 static const char *discord[] = { "/opt/Discord/Discord", NULL };
 
 /* component of dmenucmd, manipulated in spawn() */
@@ -15,6 +16,7 @@ static const char *obsidian[] = { "obsidian", NULL };
 static const char *gimp[] = { "gimp", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *lof_terminal[]  = { LOF, "alacritty", "Alacritty", NULL };
+static const char *terminal[]  = { "alacritty", NULL };
 
 static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
 static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
@@ -72,12 +74,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-    { "Alacritty", NULL,       NULL,       1 << 0,       0,           -1 },
-	{ "Chromium",  NULL,       NULL,       1 << 1,       0,           -1 },
-    { "obsidian" , NULL,       NULL,       1 << 2,       0,           -1 },
-    { "Discord",   NULL,       NULL,       1 << 3,       0,           -1 },
-	{ "Gimp",      NULL,       NULL,       1 << 4,       0,           -1 },
+	/* class      instance      title  tags mask  isfloating monitor */
+    { "Alacritty", "Alacritty", NULL,  1 << 0,    0,         -1 },
+	{ "Chromium",  NULL,        NULL,  1 << 1,    0,         -1 },
+    { "obsidian" , NULL,        NULL,  1 << 2,    0,         -1 },
+    { "discord",   "discord",   NULL,  1 << 3,    0,         -1 },
+	{ "Gimp",      NULL,        NULL,  1 << 4,    0,         -1 },
 };
 
 
@@ -113,65 +115,68 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-
     /* windows management */
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+    /* modifier          key        function        argument */
+	{ MODKEY,            XK_b,      togglebar,      {0} },
+	{ MODKEY,            XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,            XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY,            XK_i,      incnmaster,     {.i = +1 } },
+	{ MODKEY,            XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,            XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY,            XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,            XK_Return, zoom,           {0} },
+	{ MODKEY,            XK_Tab,    view,           {0} },
+	{ MODKEY,            XK_t,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,            XK_f,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,            XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,            XK_space,  setlayout,      {0} },
+	{ MODKEY|ShiftMask,  XK_space,  togglefloating, {0} },
+	{ MODKEY,            XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,  XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY,            XK_comma,  focusmon,       {.i = -1 } },
+	{ MODKEY,            XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY|ShiftMask,  XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,  XK_period, tagmon,         {.i = +1 } },
 
     /* tag */
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-    { MODKEY|ShiftMask,             XK_q,         killclient,  {0} },
-	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
+	/* modifier         key           function     argument */
+	TAGKEYS(            XK_1,                      0)
+	TAGKEYS(            XK_2,                      1)
+	TAGKEYS(            XK_3,                      2)
+	TAGKEYS(            XK_4,                      3)
+	TAGKEYS(            XK_5,                      4)
+	TAGKEYS(            XK_6,                      5)
+	TAGKEYS(            XK_7,                      6)
+	TAGKEYS(            XK_8,                      7)
+	TAGKEYS(            XK_9,                      8)
+    { MODKEY|ShiftMask, XK_q,         killclient,  {0} },
+	{ MODKEY|ShiftMask, XK_BackSpace, quit,        {0} },
 
     /* application */
-    { WINKEY,                       XK_b,      spawn,      {.v = lof_browser } },
-    { WINKEY,                       XK_d,      spawn,      {.v = discord }   },
-    { WINKEY,                       XK_g,      spawn,      {.v = gimp }      },
-    { WINKEY,                       XK_o,      spawn,      {.v = obsidian }  },
-    { MODKEY,                       XK_p,      spawn,      {.v = dmenucmd }  },
-    { ControlMask|ShiftMask,        XK_s,      spawn,      {.v = flameshot } },
-    { WINKEY,                       XK_r,      spawn,      {.v = rofi_drun } },
-    { WINKEY|ShiftMask,             XK_r,      spawn,      {.v = rofi_run }  },
-    { WINKEY|ControlMask,           XK_w,      spawn,      {.v = rofi_window } },
-    { WINKEY,                       XK_Return, spawn,      {.v = lof_terminal } },
+	/* modifier              key        func   argument */
+    { WINKEY,                XK_b,      spawn, {.v = lof_browser  } },
+    { WINKEY|ShiftMask,      XK_b,      spawn, {.v = browser      } },
+    { WINKEY,                XK_d,      spawn, {.v = discord      } },
+    { WINKEY,                XK_g,      spawn, {.v = gimp         } },
+    { WINKEY,                XK_o,      spawn, {.v = obsidian     } },
+    { MODKEY,                XK_p,      spawn, {.v = dmenucmd     } },
+    { ControlMask|ShiftMask, XK_s,      spawn, {.v = flameshot    } },
+    { WINKEY,                XK_r,      spawn, {.v = rofi_drun    } },
+    { WINKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_run     } },
+    { WINKEY|ControlMask,    XK_w,      spawn, {.v = rofi_window  } },
+    { WINKEY,                XK_Return, spawn, {.v = lof_terminal } },
+    { WINKEY|ShiftMask,      XK_Return, spawn, {.v = terminal     } },
 
-    { 0,             XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
-    { 0,             XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
-    { 0,             XF86XK_AudioLowerVolume,   spawn, {.v = downvol } },
-    { 0,             XF86XK_AudioMute,          spawn, {.v = mutevol } },
-    { 0,             XF86XK_AudioRaiseVolume,   spawn, {.v = upvol   } },
+    { 0, XF86XK_MonBrightnessUp,   spawn, {.v = incr_brightness } },
+    { 0, XF86XK_MonBrightnessDown, spawn, {.v = decr_brightness } },
+    { 0, XF86XK_AudioLowerVolume,  spawn, {.v = downvol         } },
+    { 0, XF86XK_AudioMute,         spawn, {.v = mutevol         } },
+    { 0, XF86XK_AudioRaiseVolume,  spawn, {.v = upvol           } },
 
     /* gaps */
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY,           XK_minus, setgaps, {.i = -1 } },
+	{ MODKEY,           XK_equal, setgaps, {.i = +1 } },
+	{ MODKEY|ShiftMask, XK_equal, setgaps, {.i = 0  } },
 };
 
 
