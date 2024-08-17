@@ -7,7 +7,7 @@ static const char *discord[] = { "/opt/Discord/discord", NULL };
 /* component of dmenucmd, manipulated in spawn() */
 static char dmenumon[2] = "0"; 
 static const char *dmenucmd[] = { "dmenu_run", 
-    "-m", dmenumon, "-fn", "CodeNewRomanNerdFont:size=10", NULL };
+    "-m", dmenumon, "-fn", "CodeNewRoman Nerd Font:size=10", NULL };
 
 static const char *obsidian[] = { "obsidian", NULL };
 static const char *gimp[] = { "gimp", NULL };
@@ -43,7 +43,7 @@ static const int topbar             = 0;        /* 0 means bottom bar */
  * fonts *
  *********/
 // static const char *fonts[] = { "monospace:size=10" };
-static const char *fonts[] = { "CaskaydiaCove Nerd Font:size=10:antialias=true:autohint=true" };
+static const char *fonts[] = { "CodeNewRoman Nerd Font:size=10:antialias=true:autohint=true" };
 
 
 /*********
