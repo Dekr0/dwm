@@ -1,31 +1,65 @@
-/* appearance */
+/************
+ * commands *
+ * **********/
+static const char *lof_browser[] = { "lof", "chromium", "Chromium", NULL };
+static const char *discord[] = { "/opt/Discord/discord", NULL };
+
+/* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2] = "0"; 
+static const char *dmenucmd[] = { "dmenu_run", 
+    "-m", dmenumon, "-fn", "CodeNewRomanNerdFont:size=10", NULL };
+
+static const char *obsidian[] = { "obsidian", NULL };
+static const char *gimp[] = { "gimp", NULL };
+static const char *flameshot[] = { "flameshot", "gui", NULL };
+static const char *lof_terminal[]  = { "lof", "alacritty", "Alacritty", NULL };
+
+static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
+static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
+static const char *rofi_window[] = { "rofi", "-show", "window", NULL };
+
+static const char *incr_brightness[] = { "xbacklight", "-inc", "5", NULL };
+static const char *decr_brightness[] = { "xbacklight", "-dec", "5", NULL };
+
+static const char *upvol[]   = { "/usr/bin/pactl", 
+    "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+static const char *downvol[] = { "/usr/bin/pactl", 
+    "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
+static const char *mutevol[] = { "/usr/bin/pactl", 
+    "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+
+
+/**************
+ * appearance *
+ **************/
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int gappx     = 5;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 
-/* fonts */
 
-/* defaults */
-// static const char *fonts[]          = { "monospace:size=10" };
+/*********
+ * fonts *
+ *********/
+// static const char *fonts[] = { "monospace:size=10" };
+static const char *fonts[] = { "CaskaydiaCove Nerd Font:size=10:antialias=true:autohint=true" };
 
-static const char *fonts[]             = { "CaskaydiaCove Nerd Font:size=10:antialias=true:autohint=true" };
 
-/* theme */
-#include "theme.h"
-
-/* default */
-static const char *colors[][3]      = {
+/*********
+ * theme *
+ *********/
+static const char *colors[][3] = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_rose  },
 };
 
 
-/* tagging */
+/***********
+ * tagging *
+ ***********/
 static const char *tags[] = { "", "", "", "󰙯", "", "6", "7", "8", "9" };
-
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -39,12 +73,14 @@ static const Rule rules[] = {
 	{ "Gimp",      NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
-/* layout(s) */
+
+/*************
+ * layout(s) *
+ *************/
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -52,9 +88,11 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
-/* key definitions */
+
+/*******************
+ * key definitions *
+ ******************/
 #include <X11/XF86keysym.h> // For function keys
-#include "command.h"
 
 #define MODKEY Mod1Mask
 #define WINKEY Mod4Mask
@@ -106,16 +144,16 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 
     /* application */
-    { WINKEY,                       XK_b,      spawn,      {.v = browser } },
-    { WINKEY,                       XK_d,      spawn,      {.v = discord } },
-    { WINKEY,                       XK_g,      spawn,      {.v = gimp }},
-    { WINKEY,                       XK_o,      spawn,      {.v = obsidian }},
-    { MODKEY,                       XK_p,      spawn,      {.v = dmenucmd } },
+    { WINKEY,                       XK_b,      spawn,      {.v = lof_browser } },
+    { WINKEY,                       XK_d,      spawn,      {.v = discord }   },
+    { WINKEY,                       XK_g,      spawn,      {.v = gimp }      },
+    { WINKEY,                       XK_o,      spawn,      {.v = obsidian }  },
+    { MODKEY,                       XK_p,      spawn,      {.v = dmenucmd }  },
     { ControlMask|ShiftMask,        XK_s,      spawn,      {.v = flameshot } },
-    { WINKEY|ShiftMask,             XK_r,      spawn,      {.v = rofi_run } },
     { WINKEY,                       XK_r,      spawn,      {.v = rofi_drun } },
-    { WINKEY,                       XK_w,      spawn,      {.v = rofi_window } },
-    { WINKEY,                       XK_Return, spawn,      {.v = terminal } },
+    { WINKEY|ShiftMask,             XK_r,      spawn,      {.v = rofi_run }  },
+    { WINKEY|ControlMask,           XK_w,      spawn,      {.v = rofi_window } },
+    { WINKEY,                       XK_Return, spawn,      {.v = lof_terminal } },
 
     { 0,             XF86XK_MonBrightnessUp,    spawn, {.v = incr_brightness } },
     { 0,             XF86XK_MonBrightnessDown,  spawn, {.v = decr_brightness } },
@@ -129,7 +167,10 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 };
 
-/* button definitions */
+
+/**********************
+ * button definitions *
+ **********************/
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
@@ -145,4 +186,3 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
