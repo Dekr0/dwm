@@ -163,7 +163,7 @@ static const Key keys[] = {
     { ControlMask|ShiftMask, XK_s,      spawn, {.v = flameshot    } },
     { WINKEY,                XK_r,      spawn, {.v = rofi_drun    } },
     { WINKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_run     } },
-    { WINKEY|ControlMask,    XK_w,      spawn, {.v = rofi_window  } },
+    { WINKEY|ControlMask,    XK_r,      spawn, {.v = rofi_window  } },
     { WINKEY,                XK_Return, spawn, {.v = lof_terminal } },
     { WINKEY|ShiftMask,      XK_Return, spawn, {.v = terminal     } },
 
