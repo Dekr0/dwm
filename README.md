@@ -78,7 +78,7 @@ and (re)compiling the source code.
 
 - Switch to main branch (eqivalent to origin/master branch in https://git.suckless.org/dwm)
 
-- Merge the change in that new branch into main branch.
+- Rebase (Merge if failed or too hard to resolve rebase conflict) the change in that new branch into main branch.
 
 - Make sure that there are no errors happen after merging. If there are errors, do not go to the next step before errors are resolved
 
