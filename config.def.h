@@ -3,8 +3,8 @@
  * **********/
 #define LOF "/home/dekr0/.config/zsh/lof.sh"
 
-static const char *lof_browser[] = { LOF, "chromium", "Chromium", NULL };
-static const char *browser[] = { "chromium", NULL };
+static const char *lof_browser[] = { LOF, "firefox", "Firefox", NULL };
+static const char *browser[] = { "firefox", NULL };
 static const char *discord[] = { "/opt/Discord/Discord", NULL };
 
 /* component of dmenucmd, manipulated in spawn() */
@@ -36,11 +36,11 @@ static const char *mutevol[] = { "/usr/bin/pactl",
 /**************
  * appearance *
  **************/
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
-static const unsigned int gappx     = 5;
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 0;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 
 
 /*********
@@ -76,7 +76,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance      title  tags mask  isfloating monitor */
     { "Alacritty", "Alacritty", NULL,  1 << 0,    0,         -1 },
-	{ "Chromium",  NULL,        NULL,  1 << 1,    0,         -1 },
+	{ "Firefox",   NULL,        NULL,  1 << 1,    0,         -1 },
     { "obsidian" , NULL,        NULL,  1 << 2,    0,         -1 },
     { "discord",   "discord",   NULL,  1 << 3,    0,         -1 },
 	{ "Gimp",      NULL,        NULL,  1 << 4,    0,         -1 },
