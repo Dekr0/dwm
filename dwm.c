@@ -1484,7 +1484,7 @@ sendmonwithrule(Client *c, Monitor *m)
 
 	attach(c);
 	attachstack(c);
-	focus(c);
+	focus(NULL);
 	arrange(NULL);
 }
 
