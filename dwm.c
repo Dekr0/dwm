@@ -1456,12 +1456,23 @@ sendmonwithrule(Client *c, Monitor *m)
 {
 	if (c->mon == m)
 		return;
+
+	const char *class, *instance;
+	unsigned int i;
+	const Rule *r;
+	XClassHint ch = { NULL, NULL };
+
+	XGetClassHint(dpy, c->win, &ch);
+	class    = ch.res_class ? ch.res_class : broken;
+	instance = ch.res_name  ? ch.res_name  : broken;
+
 	unfocus(c, 1);
 	detach(c);
 	detachstack(c);
 	c->mon = m;
 	c->tags = m->tagset[m->seltags]; /* assign tags of target monitor */
-	for (unsigned int i = 0; i < LENGTH(rules); i++) {
+
+	for (i = 0; i < LENGTH(rules); i++) {
 		r = &rules[i];
 		if ((!r->title || strstr(c->name, r->title))
 		&& (!r->class || strstr(class, r->class))
@@ -1470,6 +1481,7 @@ sendmonwithrule(Client *c, Monitor *m)
 			c->tags |= r->tags;
 		}
 	}
+
 	attach(c);
 	attachstack(c);
 	focus(NULL);
