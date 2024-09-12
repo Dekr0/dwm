@@ -3,7 +3,7 @@
  * **********/
 #define LOF "/home/dekr0/.config/zsh/lof.sh"
 
-static const char *lof_browser[] = { LOF, "firefox", "Firefox", NULL };
+static const char *lof_browser[] = { LOF, "firefox", "firefox", NULL };
 static const char *browser[] = { "firefox", NULL };
 static const char *discord[] = { "/opt/Discord/Discord", NULL };
 
@@ -76,7 +76,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance      title  tags mask  isfloating monitor */
     { "Alacritty", "Alacritty", NULL,  1 << 0,    0,         -1 },
-	{ "Firefox",   NULL,        NULL,  1 << 1,    0,         -1 },
+	{ "firefox",   NULL,        NULL,  1 << 1,    0,         -1 },
     { "obsidian" , NULL,        NULL,  1 << 2,    0,         -1 },
     { "discord",   "discord",   NULL,  1 << 3,    0,         -1 },
 	{ "Gimp",      NULL,        NULL,  1 << 4,    0,         -1 },
