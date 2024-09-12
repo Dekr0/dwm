@@ -1479,10 +1479,8 @@ sendmonwithrule(Client *c, Monitor *m)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->tags = r->tags;
-            m->seltags = r->tags;
 		}
 	}
-
 	attach(c);
 	attachstack(c);
 	focus(NULL);
