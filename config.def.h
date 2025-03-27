@@ -1,36 +1,53 @@
 /************
  * commands *
  * **********/
-#define LOF "/home/dekr0/.config/zsh/lof.sh"
-
-static const char *lof_browser[] = { LOF, "firefox", "firefox", NULL };
-static const char *browser[] = { "firefox", NULL };
-static const char *discord[] = { "/opt/Discord/Discord", NULL };
+static const char *browser[] = { "chromium", NULL };
 
 /* component of dmenucmd, manipulated in spawn() */
 static char dmenumon[2] = "0"; 
-static const char *dmenucmd[] = { "dmenu_run", 
-    "-m", dmenumon, "-fn", "CodeNewRoman Nerd Font:size=10", NULL };
+static const char *dmenucmd[] = {
+    "dmenu_run",
+    "-m", dmenumon,
+    "-fn", "Iosevka:size=10",
+    NULL
+};
 
-static const char *obsidian[] = { "obsidian", NULL };
-static const char *gimp[] = { "gimp", NULL };
-static const char *flameshot[] = { "flameshot", "gui", NULL };
-static const char *lof_terminal[]  = { LOF, "alacritty", "Alacritty", NULL };
-static const char *terminal[]  = { "alacritty", NULL };
+static const char *terminal[]  = { "kitty", NULL };
 
-static const char *rofi_run[] = { "rofi", "-show", "run", NULL };
-static const char *rofi_drun[] = { "rofi", "-show", "drun", NULL };
-static const char *rofi_window[] = { "rofi", "-show", "window", NULL };
+static const char *rofi_run[] = {
+    "rofi",
+    "-show", "run",
+    NULL
+};
+static const char *rofi_drun[] = {
+    "rofi",
+    "-show", "drun",
+    NULL
+};
+static const char *rofi_window[] = {
+    "rofi",
+    "-show", "window",
+    NULL
+};
 
 static const char *incr_brightness[] = { "xbacklight", "-inc", "5", NULL };
 static const char *decr_brightness[] = { "xbacklight", "-dec", "5", NULL };
 
-static const char *upvol[]   = { "/usr/bin/pactl", 
-    "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
-static const char *downvol[] = { "/usr/bin/pactl", 
-    "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
-static const char *mutevol[] = { "/usr/bin/pactl", 
-    "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+static const char *upvol[]   = {
+    "/usr/bin/pactl",
+    "set-sink-volume", "@DEFAULT_SINK@", "+5%",
+    NULL
+};
+static const char *downvol[] = {
+    "/usr/bin/pactl",
+    "set-sink-volume", "@DEFAULT_SINK@", "-5%",
+    NULL
+};
+static const char *mutevol[] = {
+    "/usr/bin/pactl",
+    "set-sink-mute", "@DEFAULT_SINK@", "toggle",
+    NULL
+};
 
 
 /**************
@@ -75,11 +92,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance      title  tags mask  isfloating monitor */
-    { "Alacritty", NULL,        NULL,  1 << 0,    0,         -1 },
-	{ "firefox",   NULL,        NULL,  1 << 1,    0,         -1 },
-    { "obsidian" , NULL,        NULL,  1 << 2,    0,         -1 },
-    { "discord",   "discord",   NULL,  1 << 3,    0,         -1 },
-	{ "Gimp",      NULL,        NULL,  1 << 4,    0,         -1 },
+    { "kitty",    NULL,         NULL,  1 << 0,    0,         -1 },
+	{ "chromium", NULL,         NULL,  1 << 1,    0,         -1 },
 };
 
 
@@ -154,17 +168,11 @@ static const Key keys[] = {
 
     /* application */
 	/* modifier              key        func   argument */
-    { WINKEY,                XK_b,      spawn, {.v = lof_browser  } },
     { WINKEY|ShiftMask,      XK_b,      spawn, {.v = browser      } },
-    { WINKEY,                XK_d,      spawn, {.v = discord      } },
-    { WINKEY,                XK_g,      spawn, {.v = gimp         } },
-    { WINKEY,                XK_o,      spawn, {.v = obsidian     } },
     { MODKEY,                XK_p,      spawn, {.v = dmenucmd     } },
-    { ControlMask|ShiftMask, XK_s,      spawn, {.v = flameshot    } },
     { WINKEY,                XK_r,      spawn, {.v = rofi_drun    } },
     { WINKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_run     } },
     { WINKEY|ControlMask,    XK_r,      spawn, {.v = rofi_window  } },
-    { WINKEY,                XK_Return, spawn, {.v = lof_terminal } },
     { WINKEY|ShiftMask,      XK_Return, spawn, {.v = terminal     } },
 
     { 0, XF86XK_MonBrightnessUp,   spawn, {.v = incr_brightness } },
