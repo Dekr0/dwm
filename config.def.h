@@ -85,7 +85,7 @@ static const char *colors[][3]      = {
 /***********
  * tagging *
  ***********/
-static const char *tags[] = { "", "", "", "󰙯", "", "6", "7", "8", "9" };
+static const char *tags[] = { "T", "B", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -168,12 +168,12 @@ static const Key keys[] = {
 
     /* application */
 	/* modifier              key        func   argument */
-    { WINKEY|ShiftMask,      XK_b,      spawn, {.v = browser      } },
+    { MODKEY|ShiftMask,      XK_b,      spawn, {.v = browser      } },
     { MODKEY,                XK_p,      spawn, {.v = dmenucmd     } },
-    { WINKEY,                XK_r,      spawn, {.v = rofi_drun    } },
-    { WINKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_run     } },
-    { WINKEY|ControlMask,    XK_r,      spawn, {.v = rofi_window  } },
-    { WINKEY|ShiftMask,      XK_Return, spawn, {.v = terminal     } },
+    { MODKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_drun    } },
+    { MODKEY|ControlMask,    XK_r,      spawn, {.v = rofi_run     } },
+    { MODKEY|ShiftMask,      XK_w,      spawn, {.v = rofi_window  } },
+    { MODKEY|ShiftMask,      XK_Return, spawn, {.v = terminal     } },
 
     { 0, XF86XK_MonBrightnessUp,   spawn, {.v = incr_brightness } },
     { 0, XF86XK_MonBrightnessDown, spawn, {.v = decr_brightness } },
