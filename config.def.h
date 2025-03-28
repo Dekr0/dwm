@@ -156,7 +156,7 @@ static const Key keys[] = {
     { MODKEY|ControlMask,    XK_r,      spawn, {.v = rofi_run       } },
     { MODKEY|ShiftMask,      XK_w,      spawn, {.v = rofi_window    } },
     { MODKEY|ShiftMask,      XK_Return, spawn, {.v = terminal       } },
-    { MODKEY,                XK_Return, spawn, {.v = focus_terminal } }
+    { MODKEY,                XK_Return, spawn, {.v = focus_terminal } },
 
     { 0, XF86XK_MonBrightnessUp,   spawn, {.v = incr_brightness } },
     { 0, XF86XK_MonBrightnessDown, spawn, {.v = decr_brightness } },
