@@ -33,7 +33,7 @@ static const char *rofi_window[] = {
 static const char *incr_brightness[] = { "xbacklight", "-inc", "5", NULL };
 static const char *decr_brightness[] = { "xbacklight", "-dec", "5", NULL };
 
-static const char *upvol[]   = {
+static const char *upvol[] = {
     "/usr/bin/pactl",
     "set-sink-volume", "@DEFAULT_SINK@", "+5%",
     NULL
