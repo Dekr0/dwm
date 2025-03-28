@@ -74,7 +74,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "T", "B", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "T", "B", "D", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -82,7 +82,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance      title  tags mask  isfloating monitor */
     { "kitty",    NULL,         NULL,  1 << 0,    0,         -1 },
-	{ "chromium", NULL,         NULL,  1 << 1,    0,         -1 },
+	{ "Chromium", NULL,         NULL,  1 << 1,    0,         -1 },
 };
 
 /* layout(s) */
