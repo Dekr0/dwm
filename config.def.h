@@ -1,6 +1,8 @@
 /* commands */
+#define FOCUS "/home/dekr0/.config/zsh/focus.sh"
+
 static const char *browser[] = { "chromium", NULL };
-static const char *focus_browser[] = { "focus", "chromium", "chromium", NULL };
+static const char *focus_browser[] = { FOCUS, "chromium", "chromium", NULL };
 
 /* component of dmenucmd, manipulated in spawn() */
 static char dmenumon[2] = "0"; 
@@ -12,7 +14,7 @@ static const char *dmenucmd[] = {
 };
 
 static const char *terminal[]  = { "kitty", NULL };
-static const char *focus_terminal[] = { "focus", "kitty", "kitty", NULL };
+static const char *focus_terminal[] = { FOCUS, "kitty", "kitty", NULL };
 
 static const char *rofi_run[] = {
     "rofi",
