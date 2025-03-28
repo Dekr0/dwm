@@ -1,18 +1,18 @@
-/************
- * commands *
- * **********/
+/* commands */
 static const char *browser[] = { "chromium", NULL };
+static const char *focus_browser[] = { "focus", "chromium", "chromium", NULL };
 
 /* component of dmenucmd, manipulated in spawn() */
 static char dmenumon[2] = "0"; 
 static const char *dmenucmd[] = {
     "dmenu_run",
     "-m", dmenumon,
-    "-fn", "Iosevka:size=10",
+    "-fn", "Jetbrain Mono:size=10",
     NULL
 };
 
 static const char *terminal[]  = { "kitty", NULL };
+static const char *focus_terminal[] = { "focus", "kitty", "kitty", NULL };
 
 static const char *rofi_run[] = {
     "rofi",
@@ -49,27 +49,17 @@ static const char *mutevol[] = {
     NULL
 };
 
-
-/**************
- * appearance *
- **************/
+/* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 0;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
+/* fonts */
+static const char *fonts[] = { "Jetbrain Mono:size=10:antialias=true:autohint=true" };
 
-/*********
- * fonts *
- *********/
-// static const char *fonts[] = { "monospace:size=10" };
-static const char *fonts[] = { "CodeNewRoman Nerd Font:size=10:antialias=true:autohint=true" };
-
-
-/*********
- * theme *
- *********/
+/* theme */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -81,10 +71,7 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
-
-/***********
- * tagging *
- ***********/
+/* tagging */
 static const char *tags[] = { "T", "B", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* xprop(1):
@@ -96,10 +83,7 @@ static const Rule rules[] = {
 	{ "chromium", NULL,         NULL,  1 << 1,    0,         -1 },
 };
 
-
-/*************
- * layout(s) *
- *************/
+/* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
@@ -111,10 +95,7 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
-
-/*******************
- * key definitions *
- ******************/
+/* key definitions */
 #include <X11/XF86keysym.h> // For function keys
 
 #define MODKEY Mod1Mask
@@ -168,12 +149,14 @@ static const Key keys[] = {
 
     /* application */
 	/* modifier              key        func   argument */
-    { MODKEY|ShiftMask,      XK_b,      spawn, {.v = browser      } },
-    { MODKEY,                XK_p,      spawn, {.v = dmenucmd     } },
-    { MODKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_drun    } },
-    { MODKEY|ControlMask,    XK_r,      spawn, {.v = rofi_run     } },
-    { MODKEY|ShiftMask,      XK_w,      spawn, {.v = rofi_window  } },
-    { MODKEY|ShiftMask,      XK_Return, spawn, {.v = terminal     } },
+    { MODKEY|ShiftMask,      XK_b,      spawn, {.v = browser        } },
+    { MODKEY|ControlMask,    XK_b,      spawn, {.v = focus_browser  } },
+    { MODKEY,                XK_p,      spawn, {.v = dmenucmd       } },
+    { MODKEY|ShiftMask,      XK_r,      spawn, {.v = rofi_drun      } },
+    { MODKEY|ControlMask,    XK_r,      spawn, {.v = rofi_run       } },
+    { MODKEY|ShiftMask,      XK_w,      spawn, {.v = rofi_window    } },
+    { MODKEY|ShiftMask,      XK_Return, spawn, {.v = terminal       } },
+    { MODKEY,                XK_Return, spawn, {.v = focus_terminal } }
 
     { 0, XF86XK_MonBrightnessUp,   spawn, {.v = incr_brightness } },
     { 0, XF86XK_MonBrightnessDown, spawn, {.v = decr_brightness } },
@@ -187,10 +170,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask, XK_equal, setgaps, {.i = 0  } },
 };
 
-
-/**********************
- * button definitions *
- **********************/
+/* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
