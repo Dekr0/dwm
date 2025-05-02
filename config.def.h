@@ -13,8 +13,8 @@ static const char *dmenucmd[] = {
     NULL
 };
 
-static const char *terminal[]  = { "kitty", NULL };
-static const char *focus_terminal[] = { FOCUS, "kitty", "kitty", NULL };
+static const char *terminal[]  = { "wezterm", NULL };
+static const char *focus_terminal[] = { FOCUS, "wezterm", "org.wezfurlong.wezterm", NULL };
 
 static const char *rofi_run[] = {
     "rofi",
@@ -62,15 +62,14 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[] = { "Iosevka:size=10:antialias=true:autohint=true" };
 
 /* theme */
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char fg[] = "#b4bdc3";
+static const char bg[] = "#1c1917";
+static const char sel_fg[] = "#b4bdc3";
+static const char sel_bg[] = "#3d4042";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	/*               fg      bg      border   */
+	[SchemeNorm] = { fg,     bg,     bg     },
+	[SchemeSel]  = { sel_fg, sel_bg, sel_bg },
 };
 
 /* tagging */
@@ -80,9 +79,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance      title  tags mask  isfloating monitor */
-    { "kitty",    NULL,         NULL,  1 << 0,    0,         -1 },
-	{ "Chromium", NULL,         NULL,  1 << 1,    0,         -1 },
+	/* class                    instance title   tags mask  isfloating monitor */
+    { "org.wezfurlong.wezterm", NULL,    NULL,   1 << 0,    0,         -1 },
+	{ "Chromium",               NULL,    NULL,   1 << 1,    0,         -1 },
 };
 
 /* layout(s) */
