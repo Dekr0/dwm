@@ -63,7 +63,7 @@ static const char *fonts[] = { "Iosevka:size=10:antialias=true:autohint=true" };
 
 /* theme */
 static const char fg[] = "#b4bdc3";
-static const char bg[] = "#1c1917";
+static const char bg[] = "#0f0b0a";
 static const char sel_fg[] = "#b4bdc3";
 static const char sel_bg[] = "#3d4042";
 static const char *colors[][3]      = {
