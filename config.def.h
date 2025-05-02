@@ -79,9 +79,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                    instance title   tags mask  isfloating monitor */
-    { "org.wezfurlong.wezterm", NULL,    NULL,   1 << 0,    0,         -1 },
-	{ "Chromium",               NULL,    NULL,   1 << 1,    0,         -1 },
+	/* class      instance title   tags mask  isfloating monitor */
+    { "wezterm",  NULL,    NULL,   1 << 0,    0,         -1 },
+	{ "Chromium", NULL,    NULL,   1 << 1,    0,         -1 },
 };
 
 /* layout(s) */
