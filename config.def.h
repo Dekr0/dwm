@@ -9,7 +9,7 @@ static char dmenumon[2] = "0";
 static const char *dmenucmd[] = {
     "dmenu_run",
     "-m", dmenumon,
-    "-fn", "Iosevka:size=10",
+    "-fn", "CommitMono:size=16",
     NULL
 };
 
@@ -59,7 +59,7 @@ static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
 /* fonts */
-static const char *fonts[] = { "Iosevka:size=10:antialias=true:autohint=true" };
+static const char *fonts[] = { "CommitMono:size=16:antialias=true:autohint=true" };
 
 /* theme */
 static const char fg[] = "#b4bdc3";
